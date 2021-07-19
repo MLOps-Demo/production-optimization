@@ -33,3 +33,5 @@ def predict(response: Response, sample: Production):
 @app.get("/healthcheck")
 async def healthcheck():
     return {"status": "okay"}
+
+print("Its Working!!")
