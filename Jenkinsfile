@@ -37,12 +37,14 @@ pipeline {
                     break
                   fi
                 done
-                cd models/
                 '''
             }
         } 
         stage ('Build Docker Image and Push to Docker Hub') {
             steps {
+                sh '''
+                cd model
+                '''
                 script {
                     def dockerfile = "model/Dockerfile"
                     dockerImage = docker.build("${env.registry}:${env.BUILD_NUMBER}", "-f ${dockerfile} .")
