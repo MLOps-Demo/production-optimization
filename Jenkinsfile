@@ -1,9 +1,6 @@
 pipeline {
-    agent {
-        node {
-            label 'testing'
-        }
-    }
+    
+    agent any
 
     stages {
         stage('Clone GitHub Repository Master Branch') {
