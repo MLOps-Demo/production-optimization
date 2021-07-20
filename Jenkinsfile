@@ -49,7 +49,7 @@ pipeline {
                 '''
                 script {
                     def dockerfile = "model/Dockerfile"
-                    dockerImage = docker.build("${env.registry}:${env.BUILD_NUMBER}", "-f ${dockerfile} .")
+                    dockerImage = docker.build("${env.registry}:${env.BUILD_NUMBER}", "-f ${dockerfile} ./model")
                     docker.withRegistry('https://registry.hub.docker.com/', registryCredential) { 
                         dockerImage.push()
                     }
