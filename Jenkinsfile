@@ -44,11 +44,13 @@ pipeline {
             steps {
                 sh '''
                 cd model
+                pwd
+                ls -lh
                 '''
                 script {
                     def dockerfile = "model/Dockerfile"
                     dockerImage = docker.build("${env.registry}:${env.BUILD_NUMBER}", "-f ${dockerfile} .")
-                    docker.withRegistry('', registryCredential) { 
+                    docker.withRegistry('https://registry.hub.docker.com/', registryCredential) { 
                         dockerImage.push()
                     }
                 }
