@@ -1,6 +1,10 @@
 pipeline {
-    
-    agent any
+    agent {
+        kubernetes {
+      defaultContainer 'core-builder'
+      yamlFile 'models/podTemplate.yaml'
+        }
+    }
 
     stages {
         stage('Clone GitHub Repository Master Branch') {
