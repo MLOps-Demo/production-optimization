@@ -8,12 +8,11 @@ pipeline {
     stages {
         stage('Clone GitHub Repository Master Branch') {
             steps {
-                git branch: 'main',url : 'https://github.com/MLOps-Demo/production-optimization.git'
+                git branch: 'main', url : 'https://github.com/MLOps-Demo/production-optimization.git'
             }
         }
         stage ('Docker_Build') {
             steps {
-                \\ Build the docker image
                 sh'''
                 # FIRST WE START THE DOCKER DAEMON
                 service docker start
