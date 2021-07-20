@@ -19,6 +19,27 @@ pipeline {
                 git branch: 'main', url : 'https://github.com/MLOps-Demo/production-optimization.git'
             }
         }
+        stage ('Start the docker engine') {
+            steps {
+                sh '''
+                service docker start
+                # the service can be started but the docker socket not ready, wait for ready
+                WAIT_N=0
+                while true; do
+                  # docker ps -q should only work if the daemon is ready
+                  docker ps -q >/dev/null 2>&1 && break
+                  if [[ ${WAIT_N} -lt 5 ]]; then
+                    WAIT_N=$((WAIT_N + 1))
+                    echo "[SETUP] Waiting for Docker to be ready, sleeping for ${WAIT_N} seconds ..."
+                    sleep ${WAIT_N}
+                  else
+                    echo "[SETUP] Reached maximum attempts, not waiting any longer ..."
+                    break
+                  fi
+                done
+                '''
+            }
+        } 
         stage ('Build Docker Image and Push to Docker Hub') {
             steps {
                 script {
