@@ -33,7 +33,8 @@ pipeline {
                 done
 
                 # Build the image
-                docker build -t skshreyas714/production-optimization-model:0.11 -f model/Dockerfile model/
+                docker build -t production-optimization-model:0.11 -f model/Dockerfile model/
+                docker tag production-optimization-model:0.11 skshreyas714/production-optimization:0.11
                 docker push skshreyas714/production-optimization:0.11
                 '''
             }
