@@ -22,7 +22,7 @@ pipeline {
         stage ('Build Docker Image and Push to Docker Hub') {
             steps {
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" model/Dockerfile
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                     docker.withRegistry('', registryCredential) { 
                         dockerImage.push()
                     }
