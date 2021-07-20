@@ -37,6 +37,7 @@ pipeline {
                     break
                   fi
                 done
+                cd models/
                 '''
             }
         } 
