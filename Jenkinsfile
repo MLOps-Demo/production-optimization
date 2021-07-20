@@ -1,4 +1,10 @@
 pipeline {
+    environment { 
+        registry = "skshreyas714/production-optimization" 
+        registryCredential = 'skshreyas714'
+        dockerImage = '' 
+    }
+    
     agent {
         kubernetes {
       defaultContainer 'core-builder'
@@ -12,7 +18,7 @@ pipeline {
                 git branch: 'main', url : 'https://github.com/MLOps-Demo/production-optimization.git'
             }
         }
-        stage ('Docker_Build') {
+        stage ('Build Docker Image and Push to Docker Hub') {
             steps {
                 sh'''
                 # FIRST WE START THE DOCKER DAEMON
