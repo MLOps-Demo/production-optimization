@@ -2,6 +2,7 @@ pipeline {
     environment { 
         registry = "skshreyas714/production-optimization" 
         registryCredential = 'skshreyas714'
+        BUILD_NUMBER = 0.11
         dockerImage = '' 
     }
     
@@ -39,11 +40,17 @@ pipeline {
                 done
 
                 # Build the image
-                docker build -t production-optimization-model:0.11 -f model/Dockerfile model/
-                docker tag production-optimization-model:0.11 skshreyas714/production-optimization:0.11
-                docker push skshreyas714/production-optimization:0.11
+                dockerImage = docker.build registry + ":$BUILD_NUMBER" model/Dockerfile
+                docker.withRegistry('', registryCredential) { 
+                        dockerImage.push() 
+                        }
                 '''
             }
         }
+        stage('Cleaning up') { 
+            steps { 
+                sh "docker rmi $registry:$BUILD_NUMBER" 
+            }
+        } 
     }
 }
