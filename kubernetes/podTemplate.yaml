@@ -9,12 +9,12 @@ spec:
     resources:
       limits:
         cpu: 500m
-        memory: 500Mi
-        ephemeral-storage: "2Gi"
+        memory: 1500Mi
+        ephemeral-storage: "5Gi"
       requests:
         cpu: 200m
-        memory: 500Mi
-        ephemeral-storage: "2Gi"
+        memory: 1000Mi
+        ephemeral-storage: "5Gi"
     securityContext:
       privileged: true
     tty: true
