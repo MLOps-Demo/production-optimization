@@ -40,7 +40,7 @@ pipeline {
                 done
 
                 # Build the image
-                dockerImage = docker.build registry + ":$BUILD_NUMBER" model/Dockerfile
+                dockerImage = docker.build registry + ":$BUILD_NUMBER" model/
                 docker.withRegistry('', registryCredential) { 
                         dockerImage.push() 
                         }
