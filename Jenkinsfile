@@ -22,7 +22,8 @@ pipeline {
         stage ('Build Docker Image and Push to Docker Hub') {
             steps {
                 script {
-                    dockerImage = docker.build("${env.registry}:${env.BUILD_NUMBER}", "-f model/Dockerfile")
+                    def dockerfile = "Dockerfile"
+                    dockerImage = docker.build("${env.registry}:${env.BUILD_NUMBER}", "-f ${dockerfile} ./model/")
                     docker.withRegistry('', registryCredential) { 
                         dockerImage.push()
                     }
