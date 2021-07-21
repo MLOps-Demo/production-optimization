@@ -9,7 +9,7 @@ pipeline {
     agent {
         kubernetes {
       defaultContainer 'core-builder'
-      yamlFile 'kubernetes/podTemplate.yaml'
+      yamlFile 'podTemplate.yaml'
         }
     }
 
