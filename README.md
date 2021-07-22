@@ -1,4 +1,4 @@
-# ML-Observability with Grafana and Prometheus
+# ML-Observability with Grafana and Prometheus 
 
 This repository provides an example setup for monitoring an ML system deployed on Kubernetes.
 
@@ -11,7 +11,7 @@ Components:
 
 ![](.assets/dashboard.png)
 
-## Setup
+## Setup (Minikube)
 
 1. Ensure you can connect to a Kubernetes cluster and have [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and [`helm`](https://helm.sh/docs/intro/install/) installed.
     - You can easily spin up a Kubernetes cluster on your local machine using [minikube](https://minikube.sigs.k8s.io/docs/start/).
