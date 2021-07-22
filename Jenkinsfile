@@ -2,7 +2,7 @@ pipeline {
     environment { 
         registry = "skshreyas714/production-optimization" 
         registryCredential = 'skshreyas714'
-        BUILD_NUMBER = 0.11
+        BUILD_NUMBER = 0.12
         dockerImage = '' 
     }
     
