@@ -2,7 +2,7 @@
 
 This repository provides an example setup for monitoring an ML system deployed on Kubernetes.
 
-Components:
+Components used in this pipeline:
 - ML model served via `FastAPI`
 - Export server metrics via `prometheus-fastapi-instrumentator`
 - Simulate production traffic via `locust`
