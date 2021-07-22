@@ -47,6 +47,7 @@ spec:
           sh "until docker ps; do sleep 3; done && docker build -t skshreyas714/production-optimization:${env.GIT_COMMIT} -f model/Dockerfile model/"
           // Publish new image
           sh "docker login --username $DOCKERHUB_CREDS_USR --password $DOCKERHUB_CREDS_PSW && docker push skshreyas714/production-optimization:${env.GIT_COMMIT}"
+          sh "docker rmi skshreyas714/production-optimization:${env.GIT_COMMIT}" 
         }
       }
     }
@@ -62,16 +63,11 @@ spec:
 
           dir("argocd-demo") {
             sh "cd ./e2e && kustomize edit set image skshreyas714/production-optimization:${env.GIT_COMMIT}"
-            sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
+            sh "git commit -am 'Publish new version' && git push https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/MLOps-Demo/argocd-demo.git || echo 'no changes'"
           }
         }
       }
     }
-    stage('Cleaning up') { 
-        steps { 
-            sh "docker rmi skshreyas714/production-optimization:${env.GIT_COMMIT}" 
-            }
-        } 
-    }
+  }
 }
 
