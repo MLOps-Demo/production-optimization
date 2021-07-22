@@ -1,4 +1,4 @@
-# ml-monitoring
+# ML-Observability
 
 This repository provides an example setup for monitoring an ML system deployed on Kubernetes.
 
