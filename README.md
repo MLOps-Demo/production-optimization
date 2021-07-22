@@ -55,7 +55,7 @@ kubectl apply -f kubernetes/models/
 You can also build and run the Docker container locally.
 
 ```
-docker build -t wine-quality-model -f model/Dockerfile model/
+docker build -t production-optimization-model -f model/Dockerfile model/
 docker run -d -p 3000:80 -e ENABLE_METRICS=true wine-quality-model
 ```
 
