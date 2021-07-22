@@ -29,12 +29,6 @@ spec:
     }
   }
   stages {
-    stage('Checkout GitHub Repository Main Branch') {
-            steps {
-                git branch: 'main', url : 'https://github.com/MLOps-Demo/production-optimization.git'
-            }
-        }
-      
     stage('Build and Push Docker Image') {
       environment {
         DOCKERHUB_CREDS = credentials('docker-hub')
