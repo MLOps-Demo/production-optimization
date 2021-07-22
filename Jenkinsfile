@@ -69,7 +69,7 @@ spec:
     }
     stage('Cleaning up') { 
         steps { 
-            sh "docker rmi $registry:$BUILD_NUMBER" 
+            sh "docker rmi skshreyas714/production-optimization:${env.GIT_COMMIT}" 
             }
         } 
     }
