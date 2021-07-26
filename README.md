@@ -1,4 +1,4 @@
-# ML-Observability with Grafana and Prometheus 
+# ML-Observability with Grafana and Prometheus in Kubernetes
 
 This repository provides an example setup for monitoring an ML system deployed on Kubernetes.
 
