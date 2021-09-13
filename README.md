@@ -1,8 +1,8 @@
-# ml-monitoring
+# ML-Observability with Grafana and Prometheus in Kubernetes
 
 This repository provides an example setup for monitoring an ML system deployed on Kubernetes.
 
-Components:
+Components used in this pipeline:
 - ML model served via `FastAPI`
 - Export server metrics via `prometheus-fastapi-instrumentator`
 - Simulate production traffic via `locust`
@@ -11,7 +11,7 @@ Components:
 
 ![](.assets/dashboard.png)
 
-## Setup
+## Setup (Minikube)
 
 1. Ensure you can connect to a Kubernetes cluster and have [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and [`helm`](https://helm.sh/docs/intro/install/) installed.
     - You can easily spin up a Kubernetes cluster on your local machine using [minikube](https://minikube.sigs.k8s.io/docs/start/).
@@ -55,7 +55,7 @@ kubectl apply -f kubernetes/models/
 You can also build and run the Docker container locally.
 
 ```
-docker build -t wine-quality-model -f model/Dockerfile model/
+docker build -t production-optimization-model -f model/Dockerfile model/
 docker run -d -p 3000:80 -e ENABLE_METRICS=true wine-quality-model
 ```
 
